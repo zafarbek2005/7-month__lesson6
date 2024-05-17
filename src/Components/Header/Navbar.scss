@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.conteiner{
+    max-width: 1440px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+header{
+    padding-top: 20px;
+    width: 100%;
+    color: #fff;
+    background: #000;
+}
+.Navbar{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    height: 50px;
+    padding-bottom: 10px;
+    font-family:  sans-serif;
+   
+}

@@ -22,7 +22,7 @@ const Create = () => {
   return (
     <div className="create-container">
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group">  
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -30,11 +30,13 @@ const Create = () => {
             value={userData.name} // userData'nın name alanına erişin
             onChange={(e) => setUserData({ ...userData, name: e.target.value })} // name'i güncelleyin
             placeholder="name"
+            required
           />
         </div>
         <div className="form-group">
           <label htmlFor="age">Age:</label>
           <input
+          required
             type="number"
             id="age"
             value={userData.age} // userData'nın age alanına erişin

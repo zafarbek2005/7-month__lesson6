@@ -1,10 +1,14 @@
 import React from 'react';
 import './User.scss';
+import { useDeleteUsersMutation } from '../../context/api/userApi';
 
-const UserWrapper = ({ data }) => {
-  const handleDelete = (userId) => {
-    console.log(`User with ID ${userId} deleted`);
-    // Implement delete functionality here
+const UserWrapper = ({ data, isAdmin }) => {
+  const [deleteUser, { isLoading }] = useDeleteUsersMutation();
+
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      deleteUser(id);
+    }
   };
 
   const userCards = data?.map((user) => (
@@ -27,7 +31,16 @@ const UserWrapper = ({ data }) => {
           <p className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aliquam aliquid porro!</p>
           <div className="buttons">
             <button type="button" className="btn hire">Hire Me</button>
-            <button type="button" className="btn delete" onClick={() => handleDelete(user.id)}>Delete</button>
+            {isAdmin && (
+              <button 
+                type="button" 
+                className="btn delete" 
+                onClick={() => handleDelete(user.id)}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Deleting...' : 'Delete'}
+              </button>
+            )}
           </div>
         </div>
         <div className="social-icons">

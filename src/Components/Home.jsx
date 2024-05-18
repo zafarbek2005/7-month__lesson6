@@ -7,7 +7,7 @@ export const Home = () => {
   return (
    <>
    
-   <User__Wrapper data = {data}/>
+   <User__Wrapper isAdmin={false} data = {data}/>
    
    
    
